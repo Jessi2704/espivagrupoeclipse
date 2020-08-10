@@ -37,6 +37,7 @@ public class controlador_usuario {
     	return this.usuarioservicios.save(Usuario);
     }
     
+    
     @DeleteMapping("eliminarusuario/{id}")
     public Map<String,Boolean> eliminarusuario (@PathVariable (value="id")Long id_usuario) throws ResourceNotFoundException
     {

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.sgeg.Server2.excepciones.*;
 import org.sgeg.Server2.entidad.abogado;
+import org.sgeg.Server2.entidad.usuario;
 import org.sgeg.Server2.repositorio.abogadoservicio;
 
 @RestController
@@ -36,6 +37,15 @@ public class controlador_abogado {
     {
     	return this.abogadoservicios.save(Abogado);
     }
+    
+    @GetMapping("buscarabogado/{id}")
+    public ResponseEntity<abogado> getAbogadoId(@PathVariable(value = "id") Long id_user)
+        throws ResourceNotFoundException{
+        abogado Abogado = abogadoservicios.findById(id_user)
+            .orElseThrow(() -> new ResourceNotFoundException("No existe Abogado con el id ::"+id_user));
+            return ResponseEntity.ok().body(Abogado);
+    }
+    
     
     @DeleteMapping("eliminarabogado/{id}")
     public Map<String,Boolean> eliminarabogado (@PathVariable (value="id")Long id_user) throws ResourceNotFoundException
