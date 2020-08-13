@@ -64,7 +64,7 @@ public class controlador_abogado {
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el  con el id :"+id_user));
 		Abogado.setNombre(abogadoDetails.getNombre());	
 		Abogado.setCedula(abogadoDetails.getCedula());
-		Abogado.setApellido(abogadoDetails.getApellido());
+		Abogado.setEstado(abogadoDetails.getEstado());
 		Abogado.setDireccion(abogadoDetails.getDireccion());
 		Abogado.setEmail(abogadoDetails.getEmail());
 		Abogado.setCelular(abogadoDetails.getCelular());

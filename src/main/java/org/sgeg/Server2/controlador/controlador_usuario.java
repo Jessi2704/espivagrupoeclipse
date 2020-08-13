@@ -37,6 +37,13 @@ public class controlador_usuario {
     	return this.usuarioservicios.save(Usuario);
     }
     
+    @GetMapping("buscarusuario/{id}")
+  	public ResponseEntity<usuario> getUsuarioId(@PathVariable(value = "id") Long id_usuario)
+  		throws ResourceNotFoundException{
+  		usuario Usuario = usuarioservicios.findById(id_usuario)
+  			.orElseThrow(() -> new ResourceNotFoundException("No existe Abogado con el id ::"+id_usuario));
+  			return ResponseEntity.ok().body(Usuario);
+  	}
     
     @DeleteMapping("eliminarusuario/{id}")
     public Map<String,Boolean> eliminarusuario (@PathVariable (value="id")Long id_usuario) throws ResourceNotFoundException
@@ -54,10 +61,9 @@ public class controlador_usuario {
 		usuario Usuario = usuarioservicios.findById(id_usuario)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el  con el id :"+id_usuario));
 		Usuario.setCedula_usuario(usuarioDetails.getCedula_usuario());
-		Usuario.setNombre_usuario(usuarioDetails.getNombre_usuario());	
-		Usuario.setApellido_usuario(usuarioDetails.getApellido_usuario());
-		Usuario.setEmail_usuario(usuarioDetails.getEmail_usuario());
-		Usuario.setCelular_usuario(usuarioDetails.getCelular_usuario());
+		Usuario.setApodo(usuarioDetails.getApodo());	
+		Usuario.setContrasenia(usuarioDetails.getContrasenia());
+		Usuario.setNombre_usuario(usuarioDetails.getNombre_usuario());
 		
 		return ResponseEntity.ok(this.usuarioservicios.save(Usuario));
 	}

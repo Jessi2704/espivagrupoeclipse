@@ -12,8 +12,8 @@ public class abogado {
 	private String cedula_abogado;
 	@Column(name = "nombre")
 	private String nombre;
-	@Column(name = "apellido")
-	private String apellido;
+	@Column(name = "estado")
+	private String estado;
 	@Column(name = "direccion")
 	private String direccion;
 	@Column(name = "email")
@@ -27,11 +27,11 @@ public class abogado {
 	}
 
 
-	public abogado(String cedula_abogado, String nombre, String apellido, String direccion, String email, String celular, String profesion) {
+	public abogado(String cedula_abogado, String nombre, String direccion, String email, String celular, String profesion, String estado) {
 		super();
 		this.cedula_abogado = cedula_abogado;
 		this.nombre = nombre;
-		this.apellido = apellido;
+		this.estado = estado;
 		this.direccion = direccion;
 		this.email = email;
 		this.celular = celular;
@@ -57,11 +57,11 @@ public class abogado {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getApellido() {
-		return apellido;
+	public String getEstado() {
+		return estado;
 	}
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	public String getDireccion() {
 		return direccion;

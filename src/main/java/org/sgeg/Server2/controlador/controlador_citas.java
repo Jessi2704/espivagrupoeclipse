@@ -36,6 +36,13 @@ public class controlador_citas {
     {
     	return this.citaservicios.save(Citas);
     }
+    @GetMapping("buscarcita/{id}")
+  	public ResponseEntity<citas> getCitaId(@PathVariable(value = "id") Long id_cita)
+  		throws ResourceNotFoundException{
+  		citas Cita = citaservicios.findById(id_cita)
+  			.orElseThrow(() -> new ResourceNotFoundException("No existe Abogado con el id ::"+id_cita));
+  			return ResponseEntity.ok().body(Cita);
+  	}
     
     @DeleteMapping("eliminarcita/{id}")
     public Map<String,Boolean> eliminarcita (@PathVariable (value="id")Long id_cita) throws ResourceNotFoundException
@@ -53,13 +60,15 @@ public class controlador_citas {
 		citas Cita = citaservicios.findById(id_cita)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe la cita  con el id :"+id_cita));
 		Cita.setCedula_abogado(citaDetails.getCedula_abogado());	
-		Cita.setCedula_usuario(citaDetails.getCedula_usuario());
+		Cita.setCedula_cliente(citaDetails.getCedula_cliente());
 		Cita.setLugar_cita(citaDetails.getLugar_cita());
 		Cita.setFecha_inicio_cita(citaDetails.getFecha_inicio_cita());
-		Cita.setFecha_fin_cita(citaDetails.getFecha_fin_cita());
+		Cita.setNombre_cliente(citaDetails.getNombre_cliente());
+		Cita.setNombre_abogado(citaDetails.getNombre_abogado());
 		Cita.setHora_inicio_cita(citaDetails.getHora_inicio_cita());
 		Cita.setHora_fin_cita(citaDetails.getHora_fin_cita());
-		Cita.setAnulacion_cita(citaDetails.getAnulacion_cita());
+		Cita.setMotivo_cita(citaDetails.getMotivo_cita());
+		Cita.setEstado_cita(citaDetails.getEstado_cita());
 		
 		return ResponseEntity.ok(this.citaservicios.save(Cita));
 	}

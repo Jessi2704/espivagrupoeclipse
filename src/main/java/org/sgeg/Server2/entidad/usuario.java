@@ -10,14 +10,20 @@ public class usuario {
 	
 	@Column(name = "cedula_usuario")
 	private String cedula_usuario;
+	
 	@Column(name = "nombre_usuario")
 	private String nombre_usuario;
-	@Column(name = "apellido_usuario")
-	private String apellido_usuario;
-	@Column(name = "email_usuario")
-	private String email_usuario;
-	@Column(name = "celular_usuario")
-	private String celular_usuario;
+	
+	@Column(name = "apodo" , unique = true)
+	private String apodo;
+	
+	
+
+
+
+	@Column(name = "contrasenia")
+	private String contrasenia;
+	
 	
 	public usuario() {
 		super();
@@ -38,7 +44,7 @@ public class usuario {
 	public void setCedula_usuario(String cedula_usuario) {
 		this.cedula_usuario = cedula_usuario;
 	}
-
+	
 	public String getNombre_usuario() {
 		return nombre_usuario;
 	}
@@ -47,38 +53,31 @@ public class usuario {
 		this.nombre_usuario = nombre_usuario;
 	}
 
-	public String getApellido_usuario() {
-		return apellido_usuario;
+	public String getApodo() {
+		return apodo;
 	}
 
-	public void setApellido_usuario(String apellido_usuario) {
-		this.apellido_usuario = apellido_usuario;
+	public void setApodo(String apodo) {
+		this.apodo = apodo;
+	}
+	
+	public String getContrasenia() {
+		return contrasenia;
 	}
 
-	public String getEmail_usuario() {
-		return email_usuario;
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
 	}
 
-	public void setEmail_usuario(String email_usuario) {
-		this.email_usuario = email_usuario;
-	}
 
-	public String getCelular_usuario() {
-		return celular_usuario;
-	}
 
-	public void setCelular_usuario(String celular_usuario) {
-		this.celular_usuario = celular_usuario;
-	}
-
-	public usuario(String cedula_usuario, String nombre_usuario, String apellido_usuario, String email_usuario,
-			String celular_usuario) {
+	public usuario(String cedula_usuario,  String apodo, String contrasenia, String nombre_usuario) {
 		super();
 		this.cedula_usuario = cedula_usuario;
+		this.apodo = apodo;
+		this.contrasenia = contrasenia;
 		this.nombre_usuario = nombre_usuario;
-		this.apellido_usuario = apellido_usuario;
-		this.email_usuario = email_usuario;
-		this.celular_usuario = celular_usuario;
+		
 	}
 
 	
